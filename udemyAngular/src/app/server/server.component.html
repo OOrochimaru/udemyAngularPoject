@@ -3,3 +3,9 @@
 </h1>
 <button class="btn btn-primary" [disabled] = '!isActive' (click)='onClickEvent()'>Add server</button>
 <p>{{serverStatus}}</p>
+
+<input type="text" class="form-control" (input)='onInput($event)'>
+<p>{{inputTeext}}</p>
+
+<input type="text" class="form-control" [(ngModel)]="inputTeext">
+<p>{{inputTeext}}</p>

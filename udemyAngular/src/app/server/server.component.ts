@@ -10,6 +10,7 @@ export class ServerComponent{
     id: Number = 10;
     isActive = false;
     serverStatus = 'server is not created yet';
+    inputTeext = 'Hello';
     constructor(){
         setTimeout(()=>{
             this.isActive = true;
@@ -18,6 +19,9 @@ export class ServerComponent{
 
     onClickEvent(){
         this.serverStatus = 'server is created now';
+    }
+    onInput(event: Event){
+        this.inputTeext = (<HTMLInputElement> event.target).value;
     }
 
 }
