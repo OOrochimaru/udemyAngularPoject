@@ -4,6 +4,11 @@ import {Component} from '@angular/core';
 @Component({
     selector:'app-server',
     templateUrl:'./server.component.html',
+    styles:[`
+        .origin{
+            color: green;
+        
+    }`]
 })
 
 export class ServerComponent{
@@ -11,6 +16,8 @@ export class ServerComponent{
     isActive = false;
     serverStatus = 'server is not created yet';
     inputTeext = 'Hello';
+    serverCreated = false;
+    servers = [];
     constructor(){
         setTimeout(()=>{
             this.isActive = true;
@@ -18,10 +25,16 @@ export class ServerComponent{
     }
 
     onClickEvent(){
-        this.serverStatus = 'server is created now';
+        this.serverCreated = true;
+        this.servers.push(this.inputTeext);
+        this.serverStatus = 'server '+this.inputTeext+ ' is now created';
     }
     onInput(event: Event){
         this.inputTeext = (<HTMLInputElement> event.target).value;
+    }
+
+    getCreatedStatus(){
+        return this.serverCreated ? 'red':'greed';
     }
 
 }

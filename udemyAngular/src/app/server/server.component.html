@@ -2,10 +2,14 @@
     This server id is {{id}}
 </h1>
 <button class="btn btn-primary" [disabled] = '!isActive' (click)='onClickEvent()'>Add server</button>
-<p>{{serverStatus}}</p>
-
+<p *ngIf="serverCreated; else notCreated" [ngStyle]="{backgroundColor: getCreatedStatus()}">{{serverStatus}}</p>
+<ng-template #notCreated>
+    <p>
+        No server is created
+    </p>
+</ng-template>
 <input type="text" class="form-control" (input)='onInput($event)'>
-<p>{{inputTeext}}</p>
+<p [ngClass]="{origin:  true }" *ngFor="let s of servers; let i= index">{{inputTeext + i}}</p>
 
 <input type="text" class="form-control" [(ngModel)]="inputTeext">
 <p>{{inputTeext}}</p>
