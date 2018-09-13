@@ -13,6 +13,10 @@ import { ShoppingListComponent } from './shopping-list/shopping-list.component';
 import { ShoppingEditComponent } from './shopping-list/shopping-edit/shopping-edit.component';
 import { RecipeListComponent } from './recipes/recipe-list/recipe-list.component';
 import { DropDownDirective } from '../shared/list.directives';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptorService } from './auth-interceptor.service';
+import { MyserviceService } from './myservice.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,9 +33,12 @@ import { DropDownDirective } from '../shared/list.directives';
   ],
   imports: [
     FormsModule,
-    BrowserModule
+    BrowserModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [{ provide: HTTP_INTERCEPTORS,
+  useClass: AuthInterceptorService, multi: true}, 
+MyserviceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
