@@ -1,5 +1,7 @@
 <app-header (rcpe) = "headerAdded($event)" ></app-header>
 <div class="container">
 <app-recipes *ngIf="loadFeature === 'recipe'"></app-recipes>
-<app-shopping-list *ngIf = " loadFeature !== 'recipe'"></app-shopping-list>
+<app-shopping-list *ngIf = " loadFeature !== 'recipe'">
+    
+</app-shopping-list>
 </div>
